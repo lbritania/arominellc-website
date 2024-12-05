@@ -1,0 +1,404 @@
+/* Google Fonts */
+@import url(https://fonts.googleapis.com/css?family=Anonymous+Pro);
+
+
+
+.container1 {
+  display: flex; /* Use flexbox for centering */
+  flex-direction: column; /* Stack text vertically */
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
+  width: 100%;
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.container1 span {
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  
+  display: block;
+}
+
+.text1 {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.5rem;
+  margin-bottom: 1rem;
+  position: relative;
+  animation: text 3s 1;
+  color: #510874e8;
+}
+
+.text2 {
+  font-family: 'Simplifica', sans-serif;
+  font-size: 1.5rem;
+  color: #6e1616;
+}
+
+@keyframes text {
+  0% {
+      color: #b12424;
+      margin-bottom: -2rem;
+  }
+  30% {
+    color: antiquewhite;
+      letter-spacing: 1.5rem;
+      margin-bottom: -2rem;
+  }
+}
+
+
+
+/* Cursor */
+.cursor{
+    position: relative;
+    width: 24em;
+    margin: 0 auto;
+    border-right: 2px solid rgba(255,255,255,.75);
+    font-size: 30px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    transform: translateY(-50%);    
+}
+/* Animation */
+.typewriter-animation {
+  animation: 
+    typewriter 3s steps(50) 1s 1 normal both, 
+    blinkingCursor 500ms steps(50) infinite normal;
+    color: #6e1616;
+}
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+@keyframes blinkingCursor{
+  from { border-right-color: rgba(255,255,255,.75); }
+  to { border-right-color: transparent; }
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+.signature-scent {
+  font-family: 'Simplifica', sans-serif;
+  font-size: 3rem;
+  color: #000;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  color: #6e1616;
+}
+
+.signature-scent {
+  padding: 0;
+  margin: 0;
+  font-family: 'Simplifica', sans-serif;
+}
+
+.style-scent {
+  font-family: 'Marcellus', serif;
+  font-size: 1.5rem;
+  color: #510874e8;
+  text-align: center;
+  margin-top: -15px;
+  letter-spacing: 1px;
+  position: relative;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body{
+  font-family: "Marcellus", serif;
+  
+}
+
+.navbar{
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+
+nav{
+  flex: 1;
+  text-align: right;
+}
+
+nav ul{
+  display: inline-block;
+  list-style-type: none;
+  font-family: 'Bebas Neue';font-size: 20px;
+}
+
+nav ul li{
+  display: inline-block;
+  margin-right: 10px;
+  margin-bottom: 80px;
+}
+
+nav ul li a {
+  text-decoration: none; /* Remove underline */
+  color: inherit; /* Inherit text color */
+  padding: 10px 20px; /* Add padding for clickable area */
+  border: 2px solid transparent; /* Transparent border to reserve space */
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s; /* Smooth transitions */
+}
+
+nav ul li a:hover {
+  background-color: rgba(0, 0, 0, 0.2); /* Add a background color */
+  border-color: transparent;
+  text-decoration: none;
+  color: #fff;
+}
+
+nav ul li:hover {
+  
+  text-decoration: none;
+  color: rgb(23, 230, 116);
+}
+
+
+a{
+  text-decoration: none;
+  color: darkblue;
+}
+
+p{
+  color: rgb(122, 122, 122);
+}
+
+.container{
+  max-width: 1300px;
+  margin: auto;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.row{
+  display:flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.img-fluid{
+  max-width:100%;
+  height: auto;
+}
+
+.col-2{
+  text-align: center;
+}
+
+* {box-sizing: border-box}
+body {font-family: Verdana, sans-serif; margin:0}
+.mySlides {display: none}
+img {vertical-align: middle;}
+
+
+.col-2 img{
+  max-width: 100%;
+  margin-top: 20px 0;
+  margin-right: 11px;
+}
+
+.col-2 p {
+  margin-left: 110px;
+}
+
+.col-2 h1 {
+  font-size: 50px;
+  line-height: 60px;
+  margin-left: 50px 0;
+  padding-left: 110px;
+}
+
+.col-2 small {
+  text-align: center;
+  padding-left: 120px;
+}
+
+.ARMN{
+  display: inline-block;
+  background: #f08080;
+  color: white;
+  padding: 8px 30px;
+  margin: 30px 0;
+  margin-left: 120px;
+  border-radius: 30px;
+  transition: background 0.5s;
+  text-align: center;
+}
+
+.ARMN:hover{
+  background: #f10f0f;
+  color: white;
+}
+
+.header{
+  background: radial-gradient(white, lightgray);
+}
+
+.header .row{
+  margin-top: 70px;
+}
+
+.categories{
+  margin: 70px 0;
+}
+
+.col-3{
+  flex-basis: 30%;
+  min-width: 250px;
+  margin-bottom: 30px;
+}
+
+.col-3 img{
+  width: 100%;
+}
+
+.small-container{
+  max-width: 1080px;
+  margin: auto;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.col-4{
+  flex-basis: 25%;
+  padding: 10px;
+  min-width: 200px;
+  margin-bottom: 50px;
+  transition: transform 0.5s;
+}
+
+.col-4 img{
+  width: 100%;
+}
+
+.title{
+  text-align: center;
+  margin: 0 auto 80px;
+  position: relative;
+  line-height: 60px;
+  color: darkblue;
+}
+
+.title::after{
+  content: '';
+  background: lightcoral;
+  width: 80px;
+  height: 5px;
+  border-radius: 5px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+h4{
+  color: dimgrey;
+  font-weight: normal;
+}
+
+.col-4 p{
+  font-size: 14px;
+}
+
+.rating .fa{
+  color: orangered;
+}
+
+.col-4:hover{
+  transform: translateY(-15px);
+}
+
+/*--------Offer--------*/
+
+.Offer{
+  background: radial-gradient(white,lightgray);
+  margin-top: 80px;
+  padding: 30px 0;
+}
+
+.col-2 .Offer-img{
+  padding: 50px;
+  position: absolute;
+}
+
+small{
+  color: darkblue;
+}
+
+/*-------- testimonial --------*/
+
+.testimonial{
+  padding-top: 100px;
+}
+
+.testimonial .col-3{
+  text-align: center;
+  padding: 40px 20px;
+  box-shadow: 0 0 20px 0px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: transform 0.5s;
+}
+
+.testimonial .col-3 img{
+  width: 50px;
+  margin-top: 20px;
+  border-radius: 50%;
+}
+
+.testimonial .col-3:hover{
+  transform: translateY(-10px);
+  
+}
+
+.fa.fa-quote-left{
+  font-size: 35px;
+  color: orangered;
+}
+
+.col-3 p{
+  font-size: 15px;
+  margin: 12px;
+  color: dimgrey;
+}
+
+.col-3 p{
+  font-size: 15px;
+  margin: 15px 0;
+  color: dimgrey;
+}
+
+.testimonial .col-3 h3{
+  font-weight: 600;
+  color: black;
+  font-size: 15px;
+}
+
+
+footer {
+  display: flex;
+  justify-content: space-between; /* Align items horizontally */
+  align-items: center;          /* Align items vertically */
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+}
+
+.footer-left,
+.footer-right {
+  display: flex;
+  gap: 10px; /* Add spacing between items */
+}
+
+
+
+

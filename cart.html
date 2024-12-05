@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products</title>
+  <style>
+    /* Style for the page */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      background-color: #f4f4f9;
+      padding: 20px;
+      background-color: lightgray;
+    }
+
+    .product {
+      background-color: #fff;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      width: 300px;
+      text-align: center;
+      margin: 10px;
+    }
+
+    .product img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    
+    .product h2 {
+      margin: 0 0 10px;
+    }
+
+    .product p {
+      font-size: 16px;
+      margin: 10px 0;
+    }
+
+    .cart-button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .cart-button:hover {
+      background-color: #45a049;
+    }
+
+    .header{
+      background: lightgray;
+      width: 100%;
+      padding: 20px 0;
+      text-align: right;
+      position: relative;
+    }
+
+    .header img {
+      position: absolute;
+      right: 60px; /* Align logo to the left */
+      top: 50%;
+      transform: translateY(-50%);
+      width: 30px;
+      height: 30px;
+    }
+
+    .header img:hover {
+          transform: translateY(-50%) scale(1.2); /* Scale up the logo */
+          opacity: 0.8; /* Make the logo slightly transparent on hover */
+    }
+      .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    .modal-content {
+      background-color: white;
+      margin: 10% auto;
+      padding: 20px;
+      width: 80%;
+      max-width: 500px;
+      border-radius: 8px;
+      text-align: left;
+    }
+
+    .modal h2 {
+      margin-top: 0;
+    }
+
+    .modal p {
+      font-size: 16px;
+      margin: 10px 0;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .review-list {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .review-list li {
+      margin: 10px 0;
+      padding: 5px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
+
+    .comment-box {
+      margin-top: 15px;
+    }
+
+    .comment-box textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+    }
+
+    .comment-box button {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .comment-box button:hover {
+      background-color: #45a049;
+    }
+    .star-rating {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+
+    .star-rating input {
+      display: none;
+    }
+
+    .star-rating label {
+      font-size: 30px;
+      color: #ddd;
+      cursor: pointer;
+      margin: 0 5px;
+    }
+
+    .star-rating input:checked ~ label {
+      color: gold;
+    }
+
+    .star-rating input:hover ~ label {
+      color: gold;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="header">                                                                  
+       <a href="bag.html" target="_self">
+       <img src="image/Bag.png" alt="Bag Logo" width="30px" height="30px"></a>
+       
+     </div>
+
+      <div id="backbutton" style="width: 100%; margin: 10px 38px; text-align: left;">
+        <button onclick="goToHomePage()" style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">
+          Back
+        </button>
+      </div>
+      
+    </div>
+    
+    <script>
+      function goToHomePage() {
+        window.location.href = "E-commerce.html";
+      }
+    </script>
+
+  <div class="product" onclick="openModal('All Natural Scent Diffuser', '₱40.00', 'A soothing scent that brings natural freshness to your space.', ['Excellent quality!', 'Very calming fragrance.'] )">
+    <img src="image/DIFF1.JPG" alt="All Natural Scent Diffuser" />
+    <h2>All Natural Scent Diffuser</h2>
+    <p>Price: ₱40.00</p>
+    <button class="cart-button" onclick="addToCart('All Natural Scent Diffuser', 40)">Add to Cart</button>
+  </div>
+
+  <div class="product" onclick="openModal('White Musk Scent Diffuser', '₱40.00', 'Pure and serene, the White Musk Scent Diffuser creates a calming atmosphere that soothes the soul.', ['Excellent quality!', 'Very calming fragrance.'])">
+    <img src="image/DIFF2.JPG" alt="White Musk Scent Diffuser" />
+    <h2>White Musk Scent Diffuser</h2>
+    <p>Price: ₱45.00</p>
+    <button class="cart-button" onclick="addToCart('White Musk Scent Diffuser', 45)">Add to Cart</button>
+  </div>
+
+  <div class="product" onclick="openModal('Honey Scent Diffuser', '₱40.00', 'Sweet and inviting, the Honey Scent Diffuser fills your space with warmth and comfort.', ['Excellent quality!', 'Very calming fragrance.'])" >
+    <img src="image/DIFF3.JPG" alt="Honey Scent Diffuser" />
+    <h2>Honey Scent Diffuser</h2>
+    <p>Price: ₱45.00</p>
+    <button class="cart-button" onclick="addToCart('Honey Scent Diffuser', 45)">Add to Cart</button>
+  </div>
+
+  <div class="product" onclick="openModal('Leather Musk Scent Diffuser', '₱40.00', 'Rich and distinctive, the Leather Musk Scent Diffuser exudes luxury and refinement.', ['Excellent quality!', 'Very calming fragrance.'])">
+    <img src="image/DIFF4.JPG" alt="Leather Musk Scent Diffuser" />
+    <h2>Leather Musk Scent Diffuser</h2>
+    <p>Price: ₱45.00</p>
+    <button class="cart-button" onclick="addToCart('Leather Musk Scent Diffuser', 45)">Add to Cart</button>
+  </div>
+
+  <div class="product" onclick="openModal('RWM Scented Candle', '₱40.00', 'A romantic and enchanting blend that fills your space with timeless elegance.', ['Excellent quality!', 'Very calming fragrance.'])">
+    <img src="image/SS1.JPG" alt="RWM Scented Candle" />
+    <h2>RWM Scented Candle</h2>
+    <p>Price: ₱55.00</p>
+    <button class="cart-button" onclick="addToCart('RWM Scented Candle', 55)">Add to Cart</button>
+  </div>
+
+  <div class="product" onclick="openModal('FC Scented Candle', '₱40.00', 'Fresh and clean, French Cotton captures the essence of crisp linens drying under a gentle breeze.', ['Excellent quality!', 'Very calming fragrance.'])">
+    <img src="image/SS2.JPG" alt="FC Scented Candle" />
+    <h2>FC Scented Candle</h2>
+    <p>Price: ₱50.00</p>
+    <button class="cart-button" onclick="addToCart('FC Scented Candle', 50)">Add to Cart</button>
+  </div>
+
+  <div class="product" onclick="openModal('RL Scented Candle', '₱40.00', 'Rich and sophisticated, Royal Leather envelops your senses with the warmth of luxury.', ['Excellent quality!', 'Very calming fragrance.'])">
+    <img src="image/SS3.JPG" alt="RL Scented Candle" />
+    <h2>RL Scented Candler</h2>
+    <p>Price: ₱50.00</p>
+    <button class="cart-button" onclick="addToCart('RL Scented Candler', 50)">Add to Cart</button>
+  </div>
+
+  <div class="product" onclick="openModal('SL Scented Candle', '₱40.00', 'Comforting and familiar, Soft Linen is the perfect scent for relaxing in a cozy, welcoming environment.', ['Excellent quality!', 'Very calming fragrance.'])">
+    <img src="image/SS4.JPG" alt="SL Scented Candle" />
+    <h2>SL Scented Candle</h2>
+    <p>Price: ₱55.00</p>
+    <button class="cart-button" onclick="addToCart('SL Scented Candle',55)">Add to Cart</button>
+  </div>
+
+  <div class="product" onclick="openModal('Parfum Cypress EDP', '₱40.00', 'Fresh and invigorating, Cypress is a tribute to natures purity and vitality.', ['Excellent quality!', 'Very calming fragrance.'])">
+    <img src="image/CYP.JPG" alt="Parfum Cypress EDP" />
+    <h2>Parfum Cypress EDP</h2>
+    <p>Price: ₱60.00</p>
+    <button class="cart-button" onclick="addToCart('Parfum Cypress EDP', 60)">Add to Cart</button>
+  </div>
+
+  <div class="product" onclick="openModal('Parfum Ashwood EDP', '₱40.00', 'A harmonious blend of warmth and resilience, Ashwood embodies timeless elegance.', ['Excellent quality!', 'Very calming fragrance.'])">
+    <img src="image/ASH.JPG" alt="Parfum Ashwood EDP" />
+    <h2>Parfum Ashwood EDP</h2>
+    <p>Price: ₱60.00</p>
+    <button class="cart-button" onclick="addToCart('Parfum Ashwood EDP', 60)">Add to Cart</button>
+  </div>
+
+  <div class="product" onclick="openModal('Parfum BlackBean EDP', '₱40.00', 'Bold and mysterious, BlackBean offers an intoxicating aroma that intrigues and seduces.', ['Excellent quality!', 'Very calming fragrance.'])">
+    <img src="image/BLCK.JPG" alt="Parfum BlackBean EDP" />
+    <h2>Parfum BlackBean EDP</h2>
+    <p>Price: ₱60.00</p>
+    <button class="cart-button" onclick="addToCart('Parfum BlackBean EDP', 60)">Add to Cart</button>
+  </div>
+
+  <div class="product" onclick="openModal('Parfum Butternut EDP', '₱40.00', 'Deeply rooted in luxury, Butternut exudes confidence and sophistication with its rich woody profile.', ['Excellent quality!', 'Very calming fragrance.'])">
+    <img src="image/BUTT.JPG" alt="Parfum Butternut EDP" />
+    <h2>Parfum Butternut EDP</h2>
+    <p>Price: ₱60.00</p>
+    <button class="cart-button" onclick="addToCart('Parfum Butternut EDP', 60)">Add to Cart</button>
+  </div>
+
+  <!-- Modal -->
+<div id="productModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2 id="modalTitle">Product Name</h2>
+    <p id="modalPrice">Price: </p>
+    <p id="modalOverview">Overview: </p>
+
+    <h3>Reviews:</h3>
+    <ul id="modalReviews" class="review-list"></ul>
+
+    <!-- Star rating input -->
+    <h3>Rate this product:</h3>
+    <div class="star-rating">
+      <input type="radio" id="star5" name="rating" value="5"><label for="star5">&#9733;</label>
+      <input type="radio" id="star4" name="rating" value="4"><label for="star4">&#9733;</label>
+      <input type="radio" id="star3" name="rating" value="3"><label for="star3">&#9733;</label>
+      <input type="radio" id="star2" name="rating" value="2"><label for="star2">&#9733;</label>
+      <input type="radio" id="star1" name="rating" value="1"><label for="star1">&#9733;</label>
+    </div>
+
+    <div class="comment-box">
+      <h3>Leave a Comment:</h3>
+      <textarea id="commentText" rows="4"></textarea>
+      <br><br>
+      <button onclick="submitComment()">Submit Comment</button>
+    </div>
+  </div>
+</div>
+
+  <script>
+
+    // Open the modal and display product details
+function openModal(productName, price, overview, reviews) {
+  document.getElementById('modalTitle').innerText = productName;
+  document.getElementById('modalPrice').innerText = 'Price: ' + price;
+  document.getElementById('modalOverview').innerText = 'Overview: ' + overview;
+
+  const reviewsList = document.getElementById('modalReviews');
+  reviewsList.innerHTML = '';
+  reviews.forEach(review => {
+    const li = document.createElement('li');
+    li.textContent = review;
+    reviewsList.appendChild(li);
+  });
+
+  // Show modal
+  document.getElementById('productModal').style.display = 'block';
+}
+
+// Close the modal
+function closeModal() {
+  document.getElementById('productModal').style.display = 'none';
+}
+
+// Submit comment (this would normally involve saving to a backend or local storage)
+function submitComment() {
+      const commentText = document.getElementById('commentText').value;
+      const rating = document.querySelector('input[name="rating"]:checked');
+
+      if (commentText && rating) {
+        const reviewText = commentText + " | Rating: " + rating.value + " Stars";
+        const commentList = document.getElementById('modalReviews');
+        const li = document.createElement('li');
+        li.textContent = reviewText;
+        commentList.appendChild(li);
+
+        // Clear the comment box and reset the rating
+        document.getElementById('commentText').value = '';
+        document.querySelector('input[name="rating"]:checked').checked = false;
+      }
+    }
+
+
+   // Function to add an item to the cart
+   function addToCart(productName, productPrice) {
+    // Save product data in localStorage
+    let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+    cartItems.push({ name: productName, price: productPrice });
+
+   
+
+    // Store updated cart in localStorage
+    localStorage.setItem('cart', JSON.stringify(cartItems));
+
+    // Redirect to cart page
+    window.open("cart.html", "_self");  // Make sure to create this page
+  }
+
+   
+  </script>
+
+</body>
+</html>

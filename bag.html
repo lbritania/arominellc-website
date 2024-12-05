@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      padding: 20px;
+    }
+    .cart-item {
+      background-color: #fff;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+    .cart-item h3 {
+      margin: 0;
+    }
+    .cart-item p {
+      margin: 5px 0;
+    }
+    .buttons {
+      margin-top: 10px;
+    }
+    .btn {
+      padding: 8px 16px;
+      margin-right: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .btn-remove {
+      background-color: #ff4d4d;
+      color: white;
+    }
+    .btn-buy {
+      background-color: #4CAF50;
+      color: white;
+    }
+    .checkout-section {
+      margin-top: 20px;
+      padding: 20px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+    }
+    .total {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .form-input {
+      margin-bottom: 10px;
+      padding: 8px;
+      width: 100%;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .payment-info {
+      margin-top: 10px;
+    }
+    .success-message {
+      margin-top: 20px;
+      color: green;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div style="width: 100%; margin: 10px 38px; text-align: left;">
+    <button onclick="goToHomePage()" style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">
+      Back
+    </button>
+
+    <script>
+      function goToHomePage() {
+        window.open("cart.html", "_self");
+      }
+    </script>
+
+  <h1>Your Cart</h1>
+  
+
+  <div id="cartItemsContainer"></div>
+
+  <!-- Checkout Section -->
+  <div class="checkout-section" id="checkoutSection" style="display:none;">
+    <h2>Checkout</h2>
+    <p class="total">Total: ₱<span id="totalPrice">0</span></p>
+
+    <!-- Checkout Form -->
+    <div id="checkoutForm" style="display:block;">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" class="form-input" placeholder="Enter your full name" required>
+      </div>
+      <div class="form-group">
+        <label for="address">Address:</label>
+        <input type="text" id="address" class="form-input" placeholder="Enter your shipping address" required>
+      </div>
+      <div class="form-group">
+        <label for="contact">Contacts:</label>
+        <input type="text" id="contact" class="form-input" placeholder="Enter your contact number" required>
+      </div>
+      <div class="form-group">
+        <label for="payment">Payment Method:</label>
+        <select id="payment" class="form-input">
+          <option value="credit">Credit Card</option>
+          <option value="GCash">GCash</option>
+          <option value="COD">Cash on Delivery</option>
+        </select>
+      </div>
+      <button class="btn btn-buy" onclick="processCheckout()">Complete Purchase</button>
+    </div>
+
+    <!-- Payment Confirmation -->
+    <div id="paymentConfirmation" style="display:none;">
+      <p>Your payment is being processed...</p>
+    </div>
+
+    <!-- Success Message -->
+    <div id="successMessage" class="success-message" style="display:none;">
+      <p>Thank you for your purchase! Your order has been successfully placed.</p>
+    </div>
+  </div>
+
+  <script>
+    // Retrieve the cart items from localStorage
+    let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+
+    // Function to remove an item from the cart
+    function removeItem(index) {
+      cartItems.splice(index, 1);
+      localStorage.setItem('cart', JSON.stringify(cartItems));
+      location.reload();
+    }
+
+    // Calculate and display the total price of items in the cart
+    function calculateTotal() {
+      let total = 0;
+      cartItems.forEach(item => {
+        total += item.price;
+      });
+      document.getElementById('totalPrice').innerText = total.toFixed(2);
+    }
+
+    // Display the cart items
+    if (cartItems.length === 0) {
+      document.getElementById('cartItemsContainer').innerHTML = "<p>Your cart is empty.</p>";
+      document.getElementById('checkoutSection').style.display = 'none';
+    } else {
+      cartItems.forEach((item, index) => {
+        let itemDiv = document.createElement('div');
+        itemDiv.classList.add('cart-item');
+        itemDiv.innerHTML = `
+          <h3>${item.name}</h3>
+          <p>Price: ₱${item.price}</p>
+          <div class="buttons">
+            <button class="btn btn-remove" onclick="removeItem(${index})">Remove</button>
+          </div>
+        `;
+        document.getElementById('cartItemsContainer').appendChild(itemDiv);
+      });
+
+      document.getElementById('checkoutSection').style.display = 'block';
+      calculateTotal();
+    }
+
+    // Function to process the checkout
+    function processCheckout() {
+      // Collect user inputs
+      const name = document.getElementById('name').value;
+      const address = document.getElementById('address').value;
+      const paymentMethod = document.getElementById('payment').value;
+
+      if (!name || !address) {
+        alert("Please fill in all the fields.");
+        return;
+      }
+
+      // Show payment processing message
+      document.getElementById('checkoutForm').style.display = 'none';
+      document.getElementById('paymentConfirmation').style.display = 'block';
+
+      // Simulate payment processing (this could be an API call to a payment gateway)
+      setTimeout(() => {
+        // Simulate a successful payment and show success message
+        document.getElementById('paymentConfirmation').style.display = 'none';
+        document.getElementById('successMessage').style.display = 'block';
+
+        // Clear the cart
+        localStorage.removeItem('cart');
+      }, 3000);  // Simulate a 3-second delay for payment processing
+    }
+
+    // JavaScript to ensure only numbers are inputted
+  document.getElementById('contact').addEventListener('input', function(event) {
+    // Allow only numeric input and limit to 11 characters
+    this.value = this.value.replace(/\D/g, '').slice(0, 11); // Remove non-numeric characters and slice to 11 digits
+
+    // Check if the input has 11 digits
+    if (this.value.length === 11) {
+      this.setCustomValidity(''); // Valid input
+    } else {
+      this.setCustomValidity('Please enter exactly 11 digits');
+    }
+  });
+  </script>
+</body>
+</html>
